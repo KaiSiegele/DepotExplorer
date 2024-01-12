@@ -1,0 +1,240 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Aktie" xml:space="preserve">
+    <value>Aktie</value>
+  </data>
+  <data name="Aktien" xml:space="preserve">
+    <value>Aktien</value>
+  </data>
+  <data name="AktuellesLand" xml:space="preserve">
+    <value>Deutschland</value>
+  </data>
+  <data name="Anbieter" xml:space="preserve">
+    <value>Anbieter</value>
+  </data>
+  <data name="Bank" xml:space="preserve">
+    <value>Bank</value>
+  </data>
+  <data name="Banken" xml:space="preserve">
+    <value>Banken</value>
+  </data>
+  <data name="BlzValidation_NotUnique" xml:space="preserve">
+    <value>Die Bankleitzahl existiert bereits</value>
+  </data>
+  <data name="BlzValidation_WrongFormat" xml:space="preserve">
+    <value>Die Bankleitzahl hat ein falsches Format.</value>
+  </data>
+  <data name="DBVersion" xml:space="preserve">
+    <value>Datenbankversion</value>
+  </data>
+  <data name="DBVersionCheckingSyntax_Error" xml:space="preserve">
+    <value>Datenbank-Version kann nicht gelesen werden</value>
+  </data>
+  <data name="DBVersionCheckingVersion_Error" xml:space="preserve">
+    <value>Falsche Datenbank-Version: Erwarte {0}.{1}, Datenbank hat {2}.{3}</value>
+  </data>
+  <data name="DBVersionLoading_Error" xml:space="preserve">
+    <value>Tabelle mit der Datenbank-Version nicht gefunden</value>
+  </data>
+  <data name="Depot" xml:space="preserve">
+    <value>Depot</value>
+  </data>
+  <data name="Depots" xml:space="preserve">
+    <value>Depots</value>
+  </data>
+  <data name="Fond" xml:space="preserve">
+    <value>Fond</value>
+  </data>
+  <data name="Fonds" xml:space="preserve">
+    <value>Fonds</value>
+  </data>
+  <data name="ISINValidation_NotUnique" xml:space="preserve">
+    <value>Die ISIN existiert bereits.</value>
+  </data>
+  <data name="ISINValidation_WrongFormat" xml:space="preserve">
+    <value>Die ISIN hat ein falsches Format.</value>
+  </data>
+  <data name="Jahr" xml:space="preserve">
+    <value>Jahr</value>
+  </data>
+  <data name="Jahre" xml:space="preserve">
+    <value>Jahre</value>
+  </data>
+  <data name="LadeWertpapiereForDepot" xml:space="preserve">
+    <value>Lade Wertpapiere fürs Depot</value>
+  </data>
+  <data name="Laender" xml:space="preserve">
+    <value>Länder</value>
+  </data>
+  <data name="LandValidation_WrongFormat" xml:space="preserve">
+    <value>Das Land hat ein falsches Format.</value>
+  </data>
+  <data name="LoadDepotEntwicklungData" xml:space="preserve">
+    <value>Lade Daten für das Depot</value>
+  </data>
+  <data name="LoadDepotJahresAbschlussData" xml:space="preserve">
+    <value>Lade den Jahresabschluss für das Depot</value>
+  </data>
+  <data name="LoadDepotWertpapierEntwicklungData" xml:space="preserve">
+    <value>Lade Daten des Wertpapiers vom Depot</value>
+  </data>
+  <data name="LoadingObjectsError" xml:space="preserve">
+    <value>Fehler beim Lesen der {0}</value>
+  </data>
+  <data name="LoadingObjectsNoData" xml:space="preserve">
+    <value>Keine {0} gefunden</value>
+  </data>
+  <data name="LoadJahresUebersichtData" xml:space="preserve">
+    <value>Lade Daten für die Jahresübersicht</value>
+  </data>
+  <data name="ObjektTypen" xml:space="preserve">
+    <value>Objekt-Typen</value>
+  </data>
+  <data name="ObjektTypenChecking_Error" xml:space="preserve">
+    <value>Fehler beim Prüfen der Objekt-Typen</value>
+  </data>
+  <data name="ObjektTypenLoading_Error" xml:space="preserve">
+    <value>Fehler beim Laden der Objekt-Typen</value>
+  </data>
+  <data name="OrtValidation_WrongFormat" xml:space="preserve">
+    <value>Der Ort hat ein falsches Format.</value>
+  </data>
+  <data name="PLZValidation_WrongFormat" xml:space="preserve">
+    <value>Die Postleitzahl hat ein falsches Format.</value>
+  </data>
+  <data name="Regionen" xml:space="preserve">
+    <value>Regionen</value>
+  </data>
+  <data name="Themen" xml:space="preserve">
+    <value>Themen</value>
+  </data>
+  <data name="Wertpapiere" xml:space="preserve">
+    <value>Wertpapiere</value>
+  </data>
+  <data name="WKNValidation_NotUnique" xml:space="preserve">
+    <value>Die WKN existiert bereits.</value>
+  </data>
+  <data name="WKNValidation_WrongFormat" xml:space="preserve">
+    <value>Die WKN hat ein falsches Format.</value>
+  </data>
+  <data name="Zuordnungen" xml:space="preserve">
+    <value>Zuordnungen</value>
+  </data>
+</root>
