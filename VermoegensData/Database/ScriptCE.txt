@@ -1,0 +1,229 @@
+create table Versionen
+(
+  Id int NOT NULL,
+  Name nvarchar(20) NOT NULL,
+  Major int NOT NULL,
+  Minor int NOT NULL,
+  Patch int NOT NULL,
+  PRIMARY KEY (Id)
+);
+
+insert into Versionen (Id, Name, Major, Minor, Patch) VALUES(1, 'DB-Version', 1, 1, 0);
+
+create table ObjektTypen
+(
+  Id int NOT NULL,
+  Name nvarchar(20) NOT NULL,
+  NextId int NOT NULL,
+  PRIMARY KEY (Id)
+);
+
+insert into ObjektTypen (Id, Name, NextId) VALUES(1, 'Depots', 1);
+insert into ObjektTypen (Id, Name, NextId) VALUES(2, 'Banken', 1);
+insert into ObjektTypen (Id, Name, NextId) VALUES(3, 'Wertpapiere', 1);
+insert into ObjektTypen (Id, Name, NextId) VALUES(4, 'Bestaende', 1);
+insert into ObjektTypen (Id, Name, NextId) VALUES(5, 'Kurse', 1);
+insert into ObjektTypen (Id, Name, NextId) VALUES(6, 'Zuordnungen', 1);
+insert into ObjektTypen (Id, Name, NextId) VALUES(7, 'Addressen', 1);
+
+create table Anbieter
+(
+  Id int NOT NULL,
+  Name nvarchar(20) NOT NULL,
+  Beschreibung nvarchar(50) NOT NULL,
+  PRIMARY KEY (Id)
+);
+
+insert into Anbieter (Id, Name, Beschreibung) VALUES(1, 'Pioneer', 'Pioneer Investment');
+insert into Anbieter (Id, Name, Beschreibung) VALUES(2, 'Allianz', 'Allianz PIMCO');
+insert into Anbieter (Id, Name, Beschreibung) VALUES(3, 'Sarasin', 'Sarasin');
+insert into Anbieter (Id, Name, Beschreibung) VALUES(4, 'DWS', 'Deutsche Bank');
+
+create table Laender
+(
+  Id int NOT NULL,
+  Name nvarchar(20) NOT NULL,
+  Beschreibung nvarchar(50) NOT NULL,
+  PRIMARY KEY (Id)
+);
+
+insert into Laender (Id, Name, Beschreibung) VALUES(1, 'Deutschland', 'Deutschland');
+insert into Laender (Id, Name, Beschreibung) VALUES(2, 'Österreich', 'Österreich');
+insert into Laender (Id, Name, Beschreibung) VALUES(3, 'Schweiz', 'Schweiz');
+insert into Laender (Id, Name, Beschreibung) VALUES(4, 'Frankreich', 'Frankreich');
+insert into Laender (Id, Name, Beschreibung) VALUES(5, 'Niederlande', 'Niederlande');
+insert into Laender (Id, Name, Beschreibung) VALUES(6, 'USA', 'Vereinigte Staaten von Amerika');
+insert into Laender (Id, Name, Beschreibung) VALUES(7, 'Kanada', 'Kanada');
+insert into Laender (Id, Name, Beschreibung) VALUES(8, 'Spanien', 'Spanien');
+
+create table Regionen
+(
+  Id int NOT NULL,
+  Name nvarchar(20) NOT NULL,
+  Beschreibung nvarchar(50) NOT NULL,
+  PRIMARY KEY (Id)
+);
+insert into Regionen (Id, Name, Beschreibung) VALUES(1, 'Deutschland', 'Deutschland');
+insert into Regionen (Id, Name, Beschreibung) VALUES(2, 'EU', 'EU');
+insert into Regionen (Id, Name, Beschreibung) VALUES(3, 'Europa', 'Europa');
+insert into Regionen (Id, Name, Beschreibung) VALUES(4, 'Welt', 'Welt');
+
+create table Themen
+(
+  Id int NOT NULL,
+  Name nvarchar(20) NOT NULL,
+  Beschreibung nvarchar(50) NOT NULL,
+  PRIMARY KEY (Id)
+);
+
+insert into Themen (Id, Name, Beschreibung) VALUES(1, 'DAX', 'Deutscher Aktienindex');
+insert into Themen (Id, Name, Beschreibung) VALUES(2, 'MDAX', 'MDAX');
+insert into Themen (Id, Name, Beschreibung) VALUES(3, 'Umwelttechnologie', 'Umwelttechnologie');
+insert into Themen (Id, Name, Beschreibung) VALUES(4, 'Oekologie', 'Oekologie');
+insert into Themen (Id, Name, Beschreibung) VALUES(5, 'Neue Energien', 'Neue Energien');
+
+create table Banken
+(
+  Id int NOT NULL,
+  Name nvarchar(20) NOT NULL,
+  Beschreibung nvarchar(50) NOT NULL,
+  Blz nvarchar(8) NOT NULL,
+  PRIMARY KEY (Id)
+);
+
+create table Addressen
+(
+  Id int NOT NULL,
+  OwnerId int NOT NULL,
+  OwnerType smallint NOT NULL default 0,
+  Strasse nvarchar(30) NOT NULL,
+  Hausnummer nvarchar(6) NOT NULL,
+  PLZ nvarchar(6) NOT NULL,
+  Ort nvarchar(30) NOT NULL,
+  Land nvarchar(24) NOT NULL,
+  PRIMARY KEY (Id)
+);
+
+create table Depots
+(
+  Id int NOT NULL,
+  Name nvarchar(20) NOT NULL,
+  Bank int NOT NULL default 0,
+  KontoNummer nvarchar(50) not null,
+  PRIMARY KEY (Id)
+);
+
+alter table Depots add CONSTRAINT AK_NAME UNIQUE(Name);
+
+create table Wertpapiere
+(
+  Id int NOT NULL,
+  Name nvarchar(24) NOT NULL,
+  Art smallint NOT NULL default 0,
+  WKN nvarchar(8) not null,
+  ISIN nvarchar(20) not null,
+  PRIMARY KEY (Id)
+);
+
+alter table Wertpapiere add CONSTRAINT AK_NAME UNIQUE(Name);
+alter table Wertpapiere add CONSTRAINT AK_WKN UNIQUE(WKN);
+alter table Wertpapiere add CONSTRAINT AK_ISIN UNIQUE(ISIN);
+
+create table Fonds
+(
+  Id int NOT NULL,
+  Typ smallint NOT NULL default 0,
+  Theme smallint NOT NULL default 0,
+  Region smallint NOT NULL default 0,
+  Anbieter int NOT NULL,
+  PRIMARY KEY (Id)
+);
+
+create table Aktien
+(
+  Id int NOT NULL,
+  Land int NOT NULL,
+  Branche nvarchar(20) not null,
+  Beschreibung nvarchar(50) NOT NULL,
+  PRIMARY KEY (Id)
+);
+
+create table Jahre
+(
+  Id int NOT NULL,
+  Name nvarchar(20) NOT NULL,
+  PRIMARY KEY (Id)
+);
+
+insert into Jahre (Id, Name) VALUES(1, '2001');
+insert into Jahre (Id, Name) VALUES(2, '2002');
+insert into Jahre (Id, Name) VALUES(3, '2003');
+insert into Jahre (Id, Name) VALUES(4, '2004');
+insert into Jahre (Id, Name) VALUES(5, '2005');
+insert into Jahre (Id, Name) VALUES(6, '2006');
+insert into Jahre (Id, Name) VALUES(7, '2007');
+insert into Jahre (Id, Name) VALUES(8, '2008');
+insert into Jahre (Id, Name) VALUES(9, '2009');
+insert into Jahre (Id, Name) VALUES(10, '2010');
+insert into Jahre (Id, Name) VALUES(11, '2011');
+insert into Jahre (Id, Name) VALUES(12, '2012');
+insert into Jahre (Id, Name) VALUES(13, '2013');
+insert into Jahre (Id, Name) VALUES(14, '2014');
+insert into Jahre (Id, Name) VALUES(15, '2015');
+insert into Jahre (Id, Name) VALUES(16, '2016');
+insert into Jahre (Id, Name) VALUES(17, '2017');
+insert into Jahre (Id, Name) VALUES(18, '2018');
+insert into Jahre (Id, Name) VALUES(19, '2019');
+insert into Jahre (Id, Name) VALUES(20, '2020');
+insert into Jahre (Id, Name) VALUES(21, '2021');
+insert into Jahre (Id, Name) VALUES(22, '2022');
+insert into Jahre (Id, Name) VALUES(23, '2023');
+insert into Jahre (Id, Name) VALUES(24, '2024');
+insert into Jahre (Id, Name) VALUES(25, '2025');
+insert into Jahre (Id, Name) VALUES(26, '2026');
+insert into Jahre (Id, Name) VALUES(27, '2027');
+insert into Jahre (Id, Name) VALUES(28, '2028');
+insert into Jahre (Id, Name) VALUES(29, '2029');
+insert into Jahre (Id, Name) VALUES(30, '2030');
+
+create table Kurse
+(
+  Id int NOT NULL,
+  Jahr int NOT NULL default 0,
+  Wertpapier int NOT NULL default 0,
+  Wert float NOT NULL default 0.0,
+  PRIMARY KEY (Id)
+);
+
+alter table Kurse add CONSTRAINT FK_Wertpapier FOREIGN KEY (Wertpapier) REFERENCES Wertpapiere(Id) on delete cascade;
+
+create table Bestaende
+(
+  Id int NOT NULL,
+  Depot int NOT NULL default 0,
+  Wertpapier int NOT NULL default 0,
+  Jahr int NOT NULL default 0,
+  Kauf float NOT NULL default 0.0,
+  Verkauf float NOT NULL default 0.0,
+  Dividende float NOT NULL default 0.0,
+  Anteile float NOT NULL default 0.0,
+  PRIMARY KEY (Id)
+);
+
+alter table Bestaende add CONSTRAINT FK_Wertpapier FOREIGN KEY (Wertpapier) REFERENCES Wertpapiere(Id) on delete cascade;
+alter table Bestaende add CONSTRAINT FK_Depot FOREIGN KEY (Depot) REFERENCES Depots(Id) on delete cascade;
+
+
+create table Zuordnungen
+(
+  Id int NOT NULL,
+  Depot int NOT NULL default 0,
+  Wertpapier int NOT NULL default 0,
+  PRIMARY KEY (Id)
+);
+
+alter table Zuordnungen add CONSTRAINT FK_Wertpapier FOREIGN KEY (Wertpapier) REFERENCES Wertpapiere(Id) on delete cascade;
+alter table Zuordnungen add CONSTRAINT FK_Depot FOREIGN KEY (Depot) REFERENCES Depots(Id) on delete cascade;
+
+
+
