@@ -1,0 +1,13 @@
+.vs/
+Basics/bin/
+Basics/obj/
+Persistence/bin/
+Persistence/obj/
+Tools/bin/
+Tools/obj/
+UserInterface/bin/
+UserInterface/obj/
+VermoegensData/bin/
+VermoegensData/obj/
+DepotExplorer/bin/
+DepotExplorer/obj/
