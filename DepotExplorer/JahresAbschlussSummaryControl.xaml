@@ -1,0 +1,44 @@
+﻿<UserControl x:Class="DepotExplorer.JahresAbschlussSummaryControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DepotExplorer"
+             mc:Ignorable="d" 
+             d:DesignHeight="200" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary Source="ResourceDictionary.xaml"></ResourceDictionary>
+    </UserControl.Resources>
+    <GroupBox Name="GBSummary" Grid.Row="2">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Label Content="Verkäufe" Grid.Row="0"/>
+            <Label Content="Käufe" Grid.Row="1"/>
+            <Label Content="Dividende" Grid.Row="2"/>
+            <Label Content="Saldo" Grid.Row="3"/>
+            <TextBox Grid.Column="1" Grid.Row="0" Name="TextBoxVerkaeufe" Style="{StaticResource NumericTextbox}" Text="{Binding Path=Verkaeufe, Converter={StaticResource currencyConverter}, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBox Grid.Column="1" Grid.Row="1" Name="TextBoxKaeufe" Style="{StaticResource NumericTextbox}" Text="{Binding Path=Kaeufe, Converter={StaticResource currencyConverter}, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBox Grid.Column="1" Grid.Row="2" Name="TextBoxDividende" Style="{StaticResource NumericTextbox}" Text="{Binding Path=Dividende, Converter={StaticResource currencyConverter}, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBox Grid.Column="1" Grid.Row="3" Name="TextBoxSaldo" Style="{StaticResource NumericTextbox}" Foreground="{Binding Path=Saldo, Converter={StaticResource saldoColorConverter}, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Text="{Binding Path=Saldo, Converter={StaticResource currencyConverter}, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+            <Label Content="Gesamtwert" Grid.Row="0" Grid.Column="2"/>
+            <Label Content="Einsatz" Grid.Row="1" Grid.Column="2" />
+            <Label Content="Vorjahr" Grid.Row="2" Grid.Column="2"/>
+            <Label Content="Gewinn" Grid.Row="3" Grid.Column="2"/>
+            <TextBox Grid.Column="3" Grid.Row="0" Name="TextBoxGesamtWert" Style="{StaticResource NumericTextbox}" Text="{Binding Path=GesamtWert, Converter={StaticResource currencyConverter}, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBox Grid.Column="3" Grid.Row="1" Name="TextBoxEinsatz" Style="{StaticResource NumericTextbox}" Text="{Binding Path=Einsatz, Converter={StaticResource currencyConverter}, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBox Grid.Column="3" Grid.Row="2" Name="TextBoxGesamtWertVorjahr" Style="{StaticResource NumericTextbox}" Text="{Binding Path=GesamtWertVorjahr, Converter={StaticResource currencyConverter}, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBox Grid.Column="3" Grid.Row="3" Name="TextBoxGewinn" Style="{StaticResource NumericTextbox}" Foreground="{Binding Path=Gewinn, Converter={StaticResource saldoColorConverter}, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Text="{Binding Path=Gewinn, Converter={StaticResource currencyConverter}, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+        </Grid>
+    </GroupBox>
+</UserControl>

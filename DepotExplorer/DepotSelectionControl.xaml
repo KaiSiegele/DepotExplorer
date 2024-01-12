@@ -1,0 +1,39 @@
+﻿<ui:BaseObjectSelectionControl x:Class="DepotExplorer.DepotSelectionControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:ui="clr-namespace:UserInterface;assembly=UserInterface"
+             xmlns:local="clr-namespace:DepotExplorer"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="300">
+    <UserControl.Resources>
+        <ResourceDictionary Source="ResourceDictionary.xaml"></ResourceDictionary>
+    </UserControl.Resources>
+    <GroupBox Name="GrpDepots" Grid.Column="0" >
+        <ListView  Name="LvwDepots" GridViewColumnHeader.Click="OnHeaderClicked" MouseDoubleClick="OnMouseDoubleClick">
+            <ListView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Einfügen" Command="New" />
+                    <MenuItem Header="Ändern" Command="Open"/>
+                    <MenuItem Header="Löschen" Command="ApplicationCommands.Delete"/>
+                    <MenuItem Header="Ansicht" Command="local:VermoegensExplorerCommands.ViewBaseObject"/>
+                </ContextMenu>
+            </ListView.ContextMenu>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding Name}">
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader Content="Name" Name="Name"/>
+                        </GridViewColumn.Header>
+                    </GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding KontoNummer}">
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader Content="Kontonummer" Name="KontoNummer"/>
+                        </GridViewColumn.Header>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </GroupBox>
+</ui:BaseObjectSelectionControl>

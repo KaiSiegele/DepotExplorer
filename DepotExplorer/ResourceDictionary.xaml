@@ -1,0 +1,200 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:DepotExplorer">
+    <local:FondsTypConverter x:Key="typConverter" />
+    <local:FondsThemeConverter x:Key="themeConverter" />
+    <local:FondsRegionConverter x:Key="regionConverter" />
+    <local:JahrConverter x:Key="jahrConverter" />
+    <local:DepotConverter x:Key="depotConverter" />
+    <local:AnbieterConverter x:Key="anbieterConverter" />
+    <local:LandConverter x:Key="landConverter" />
+    <local:BankConverter x:Key="bankConverter" />
+    <local:AktieConverter x:Key="aktieConverter" />
+    <local:FondConverter x:Key="fondConverter" />
+    <local:WertpapierArtConverter x:Key="wertpapierArtConverter" />
+    <local:CurrencyConverter x:Key="currencyConverter" />
+    <local:AnteileConverter x:Key="anteileConverter" />
+    <local:SaldoColourConverter x:Key="saldoColorConverter" />
+    <local:SaldoStringConverter x:Key="saldoStringConverter" />
+    <local:WertpapierConverter x:Key="wertpapierConverter" />
+
+    <!-- Zellinhalte -->
+    <Style x:Key="SaldoDataGridCell" TargetType="{x:Type DataGridCell}">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Path=Saldo, Converter={StaticResource saldoStringConverter}}" Value="Positiv">
+                <Setter Property="Foreground" Value="Green" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=Saldo, Converter={StaticResource saldoStringConverter}}" Value="Negativ">
+                <Setter Property="Foreground" Value="Red" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=Saldo, Converter={StaticResource saldoStringConverter}}" Value="Null">
+                <Setter Property="Foreground" Value="Black" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="GewinnDataGridCell" TargetType="{x:Type DataGridCell}">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Path=Gewinn, Converter={StaticResource saldoStringConverter}}" Value="Positiv">
+                <Setter Property="Foreground" Value="Green" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=Gewinn, Converter={StaticResource saldoStringConverter}}" Value="Negativ">
+                <Setter Property="Foreground" Value="Red" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=Gewinn, Converter={StaticResource saldoStringConverter}}" Value="Null">
+                <Setter Property="Foreground" Value="Black" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <!-- Textblöcke -->
+    <Style x:Key="CellContent" TargetType="{x:Type TextBlock}">
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Margin" Value="2,2,2,2"></Setter>
+    </Style>
+    <Style x:Key="TitleContent" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource CellContent}">
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="Foreground" Value="DarkBlue"></Setter>
+    </Style>
+    <Style x:Key="NumericContent" TargetType="{x:Type TextBlock}">
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Right" />
+        <Setter Property="Margin" Value="2,2,2,2"></Setter>
+    </Style>
+    <Style TargetType="{x:Type GridViewColumnHeader}">
+        <Setter Property="Height" Value="35" />
+        <Setter Property="FontWeight" Value="Black" />
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Foreground" Value="Yellow"></Setter>
+                <Setter Property="Background" Value="Black"></Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="{x:Type ListViewItem}">
+        <Setter Property="Height" Value="35" />
+        <Style.Triggers>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Foreground" Value="White"></Setter>
+                <Setter Property="Background" Value="Blue"/>
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Foreground" Value="White"></Setter>
+                <Setter Property="Background" Value="LightBlue"></Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="{x:Type DataGridColumnHeader}">
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+        <Setter Property="Height" Value="35" />
+        <Setter Property="SeparatorBrush" Value="DarkOrchid" />
+        <Setter Property="FontWeight" Value="Black" />
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Foreground" Value="Yellow"></Setter>
+                <Setter Property="Background" Value="BlueViolet"></Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="ValueNumericColumnHeader" TargetType="{x:Type DataGridColumnHeader}" BasedOn="{StaticResource {x:Type DataGridColumnHeader}}">
+        <Setter Property="Width" Value="120" />
+    </Style>
+    <Style x:Key="NumericColumnHeader" TargetType="{x:Type DataGridColumnHeader}" BasedOn="{StaticResource {x:Type DataGridColumnHeader}}">
+        <Setter Property="Width" Value="80" />
+    </Style>
+    <Style TargetType="{x:Type DataGridRow}">
+        <Setter Property="Height" Value="30" />
+    </Style>
+    <!-- Controls -->
+    <Style TargetType="{x:Type Label}">
+        <Setter Property="Margin" Value="5,0,5,0" />
+        <Setter Property="Height" Value="28" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+    </Style>
+    <Style TargetType="{x:Type Button}">
+        <Setter Property="Margin" Value="5,0,5,0"  />
+        <Setter Property="Height" Value="23" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="Width" Value="75" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+    <Style x:Key="ToolBarButton" TargetType="{x:Type Button}">
+        <Setter Property="Margin" Value="5,0,5,0"  />
+        <Setter Property="Height" Value="40" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="Width" Value="75" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+    <Style x:Key="NumericTextbox" TargetType="{x:Type TextBox}">
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="IsReadOnly" Value="true" />
+        <Setter Property="HorizontalContentAlignment" Value="Right" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Height" Value="28" />
+        <Setter Property="Width" Value="120" />
+        <Setter Property="Margin" Value="5,0,5,0" />
+    </Style>
+    <Style TargetType="{x:Type TextBox}">
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Height" Value="28" />
+        <Setter Property="Margin" Value="5,0,5,0" />
+        <Setter Property="Validation.ErrorTemplate">
+            <Setter.Value>
+                <ControlTemplate>
+                    <DockPanel LastChildFill="true">
+                        <Border Background="HotPink" DockPanel.Dock="right" Margin="5,0,0,0" 
+                                Width="20" Height="20" CornerRadius="5"
+                                ToolTip="{Binding ElementName=customAdorner, 
+                                          Path=AdornedElement.(Validation.Errors)[0].ErrorContent}">
+                            <TextBlock Text="!" VerticalAlignment="center" HorizontalAlignment="center" 
+                                   FontWeight="Bold" Foreground="white" />
+                        </Border>
+                        <AdornedElementPlaceholder Name="customAdorner" VerticalAlignment="Center" >
+                            <Border BorderBrush="Purple" BorderThickness="1" />
+                        </AdornedElementPlaceholder>
+                    </DockPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="{x:Type CheckBox}">
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Margin" Value="5,0,5,0" />
+    </Style>
+    <Style TargetType="{x:Type ComboBox}">
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Margin" Value="5,0,5,0" />
+        <Setter Property="Height" Value="28" />
+        <Setter Property="Validation.ErrorTemplate">
+            <Setter.Value>
+                <ControlTemplate>
+                    <DockPanel LastChildFill="true">
+                        <Border Background="HotPink" DockPanel.Dock="right" Margin="5,0,0,0" 
+                                Width="20" Height="20" CornerRadius="5"
+                                ToolTip="{Binding ElementName=customAdorner, 
+                                          Path=AdornedElement.(Validation.Errors)[0].ErrorContent}">
+                            <TextBlock Text="!" VerticalAlignment="center" HorizontalAlignment="center" 
+                                   FontWeight="Bold" Foreground="white" />
+                        </Border>
+                        <AdornedElementPlaceholder Name="customAdorner" VerticalAlignment="Center" >
+                            <Border BorderBrush="Purple" BorderThickness="1" />
+                        </AdornedElementPlaceholder>
+                    </DockPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <DataTemplate x:Key="DepotItem">
+        <TextBlock Text="{Binding Path=Name}"/>
+    </DataTemplate>
+    <DataTemplate x:Key="JahrItem">
+        <TextBlock Text="{Binding Path=Name}"/>
+    </DataTemplate>
+</ResourceDictionary>

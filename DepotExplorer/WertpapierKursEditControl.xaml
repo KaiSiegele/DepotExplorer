@@ -1,0 +1,36 @@
+﻿<ui:BaseContentEditControl x:Class="DepotExplorer.WertpapierKursEditControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:ui="clr-namespace:UserInterface;assembly=UserInterface"
+             xmlns:local="clr-namespace:DepotExplorer"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="400">
+    <UserControl.Resources>
+        <ResourceDictionary Source="ResourceDictionary.xaml"></ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid Name="KursButtons" Grid.Row="0"  Height="31">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width ="90"/>
+                <ColumnDefinition Width ="90"/>
+                <ColumnDefinition Width ="90"/>
+                <ColumnDefinition Width ="100*"/>
+            </Grid.ColumnDefinitions>
+            <Button Content="Löschen" Grid.Column="0" Name="BtRemoveBestand" Command="local:VermoegensExplorerCommands.RemoveKursWert"/>
+            <Button Content="Neu" Grid.Column="1" Name="BtNewBestand" Command="local:VermoegensExplorerCommands.InsertKursWert" />
+            <Button Content="Ergänzen" Grid.Column="2" Name="BtExtendBestand" Command="local:VermoegensExplorerCommands.ExtendKursWerte"/>
+        </Grid>
+        <DataGrid Margin="5,5,5,5" AutoGenerateColumns="False" Grid.Row="1" HorizontalAlignment="Left" Name="DataGridKurse" VerticalAlignment="Stretch">
+            <DataGrid.Columns>
+                <DataGridComboBoxColumn Header="Jahr" x:Name="JahrAuswahl" Width="50*" SelectedValueBinding="{Binding Jahr, Converter={StaticResource jahrConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="{Binding Jahr, Converter={StaticResource jahrConverter}}" MinWidth="60" />
+                <DataGridTextColumn x:Name="WertEingabe" HeaderStyle="{StaticResource ValueNumericColumnHeader}" ElementStyle="{StaticResource NumericContent}" Header="Wert" Binding ="{Binding Wert,  Converter={StaticResource currencyConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" MinWidth="60" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</ui:BaseContentEditControl>
