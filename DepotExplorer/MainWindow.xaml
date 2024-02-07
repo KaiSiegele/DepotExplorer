@@ -15,14 +15,16 @@
             <MenuItem Header="Bearbeiten">
                 <MenuItem Header="Einfügen" Command="New" />
                 <MenuItem Header="Ändern" Command="Open"/>
-                <MenuItem Header="Löschen" Command="ApplicationCommands.Delete"/>
+                <MenuItem Header="Löschen" Command="Delete"/>
+                <MenuItem Header="Ansicht" Command="local:VermoegensExplorerCommands.ViewBaseObject"/>
             </MenuItem>
         </Menu>
         <ToolBarTray DockPanel.Dock ="Top">
             <ToolBar>
                 <Button Style="{StaticResource ToolBarButton}" Content="Neu" Command="New" />
                 <Button Style="{StaticResource ToolBarButton}" Content="Ändern" Command="Open" />
-                <Button Style="{StaticResource ToolBarButton}" Content="Löschen" Command="ApplicationCommands.Delete" />
+                <Button Style="{StaticResource ToolBarButton}" Content="Löschen" Command="Delete" />
+                <Button Style="{StaticResource ToolBarButton}" Content="Ansicht" Command="local:VermoegensExplorerCommands.ViewBaseObject" />
                 <Separator></Separator>
                 <Button Style="{StaticResource ToolBarButton}" Content="Speichern" Command="Save"/>
                 <Button Style="{StaticResource ToolBarButton}" Content="Abbruch" Command="ApplicationCommands.Stop" />
