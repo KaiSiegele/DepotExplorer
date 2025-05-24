@@ -173,8 +173,8 @@ namespace VermoegensData
 
             if (LoadTable(Properties.Resources.LoadDepotWertpapierEntwicklungData, query, _dataTable))
             {
-                Func<double, double, double, double> calcGewinn = (wert, kauf, verkauf) => wert - kauf + verkauf;
-                _dataTable.UpdateColumn("Gewinn", "Gesamtwert", "Kaeufe", "Verkaeufe", calcGewinn);
+                Func<double, double, double, double, double> calcGewinn = (wert, kauf, verkauf, dividende) => wert - kauf + verkauf + dividende;
+                _dataTable.UpdateColumn("Gewinn", "Gesamtwert", "Kaeufe", "Verkaeufe", "Dividende", calcGewinn);
                 result = true;
             }
             return result;
