@@ -9,6 +9,18 @@ using System.Threading.Tasks;
 namespace Tools
 {
     /// <summary>
+    /// Klasse, um einzelne Zeilen der DataTable zu verändern
+    /// </summary>
+    public abstract class DataRowUpdater
+    {
+        /// <summary>
+        /// Ändert die Werte von Spalten in der Zeile
+        /// </summary>
+        /// <param name="row"Zeile></param>
+        public abstract void Update(DataRow row);
+    }
+
+    /// <summary>
     /// Hilfreiche Methoden zur Ergaenzung der Klasse DataTable
     /// </summary>
     public static class DataTableExtensions
@@ -86,56 +98,15 @@ namespace Tools
         }
 
         /// <summary>
-        /// Fuehrt fuer jede Zeile mit den Werten der Spalten die uebergebene
-        /// Funktion aus und speichert das Ergebnis in der Ergebnisspalte ab
+        /// Ändert alle Zeilen in der Tabelle
         /// </summary>
         /// <param name="dt">Tabelle</param>
-        /// <param name="resultcolumn">Name der Ergebnisspalte</param>
-        /// <param name="column1">Name der 1. Spalte</param>
-        /// <param name="column2">Name der 2. Spalte</param>
-        /// <param name="column3">Name der 3. Spalte</param>
-        /// <param name="func">Auszufuehrende Funktion</param>
-        public static void UpdateColumn(this DataTable dt, string resultcolumn, string column1, string column2, string column3, Func<double, double, double, double> func)
+        /// <param name="updater">Objekt zum Ändern der Zeilen</param>
+        public static void UpdateRows(this DataTable dt, DataRowUpdater updater)
         {
             foreach (DataRow row in dt.Rows)
             {
-                UpdateColumn(row, resultcolumn, column1, column2, column3, func);
-            }
-        }
-
-        /// <summary>
-        /// Fuehrt fuer jede Zeile mit den Werten der Spalten die uebergebene
-        /// Funktion aus und speichert das Ergebnis in der Ergebnisspalte ab
-        /// </summary>
-        /// <param name="dt">Tabelle</param>
-        /// <param name="resultcolumn">Name der Ergebnisspalte</param>
-        /// <param name="column1">Name der 1. Spalte</param>
-        /// <param name="column2">Name der 2. Spalte</param>
-        /// <param name="func">Auszufuehrende Funktion</param>
-        public static void UpdateColumn(this DataTable dt, string resultcolumn, string column1, string column2, Func<double, double, double> func)
-        {
-            foreach (DataRow row in dt.Rows)
-            {
-                UpdateColumn(row, resultcolumn, column1, column2, func);
-            }
-        }
-
-        /// <summary>
-        /// Fuehrt fuer jede Zeile mit den Werten der Spalten die uebergebene
-        /// Funktion aus und speichert das Ergebnis in der Ergebnisspalte ab
-        /// </summary>
-        /// <param name="dt">Tabelle</param>
-        /// <param name="resultcolumn">Name der Ergebnisspalte</param>
-        /// <param name="column1">Name der 1. Spalte</param>
-        /// <param name="column2">Name der 2. Spalte</param>
-        /// <param name="column3">Name der 3. Spalte</param>
-        /// <param name="column4">Name der 4. Spalte</param>
-        /// <param name="func">Auszufuehrende Funktion</param>
-        public static void UpdateColumn(this DataTable dt, string resultcolumn, string column1, string column2, string column3, string column4, Func<double, double, double, double, double> func)
-        {
-            foreach (DataRow row in dt.Rows)
-            {
-                UpdateColumn(row, resultcolumn, column1, column2, column3, column4, func);
+                updater.Update(row);
             }
         }
 
@@ -148,30 +119,6 @@ namespace Tools
                 sum += row.GetDoubleValue(col);
             }
             row.SetDoubleValue(resultcolumn, sum);
-        }
-
-        static void UpdateColumn(DataRow row, string resultcolumn, string column1, string column2, Func<double, double, double> func)
-        {
-            double value1 = row.GetDoubleValue(column1);
-            double value2 = row.GetDoubleValue(column2);
-            row.SetDoubleValue(resultcolumn, func(value1, value2));
-        }
-
-        static void UpdateColumn(DataRow row, string resultcolumn, string column1, string column2, string column3, Func<double, double, double, double> func)
-        {
-            double value1 = row.GetDoubleValue(column1);
-            double value2 = row.GetDoubleValue(column2);
-            double value3 = row.GetDoubleValue(column3);
-            row.SetDoubleValue(resultcolumn, func(value1, value2, value3));
-        }
-
-        static void UpdateColumn(DataRow row, string resultcolumn, string column1, string column2, string column3, string column4, Func<double, double, double, double, double> func)
-        {
-            double value1 = row.GetDoubleValue(column1);
-            double value2 = row.GetDoubleValue(column2);
-            double value3 = row.GetDoubleValue(column3);
-            double value4 = row.GetDoubleValue(column4);
-            row.SetDoubleValue(resultcolumn, func(value1, value2, value3, value4));
         }
     }
 }

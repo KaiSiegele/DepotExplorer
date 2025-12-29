@@ -125,11 +125,23 @@ namespace VermoegensData
 
             if (LoadTable(Properties.Resources.LoadDepotJahresAbschlussData, query, _dataTable))
             {
-                Func<double, double, double, double> calcGewinn = (wert, vorjahreswert, saldo) => wert - vorjahreswert + saldo;
-                _dataTable.UpdateColumn("Gewinn", "Gesamtwert", "Vorjahr", "Saldo", calcGewinn);
+                var gewinnCalculator = new GewinnCalculator();
+                _dataTable.UpdateRows(gewinnCalculator);
                 result = true;
             }
             return result;
+        }
+
+        class GewinnCalculator : DataRowUpdater
+        {
+            public override void Update(DataRow row)
+            {
+                double gesamtWert = row.GetDoubleValue("Gesamtwert");
+                double vorjahr = row.GetDoubleValue("Vorjahr");
+                double saldo = row.GetDoubleValue("Saldo");
+                double gewinn = gesamtWert - vorjahr + saldo;
+                row.SetDoubleValue("Gewinn", gewinn);
+            }
         }
     }
 
@@ -173,11 +185,26 @@ namespace VermoegensData
 
             if (LoadTable(Properties.Resources.LoadDepotWertpapierEntwicklungData, query, _dataTable))
             {
-                Func<double, double, double, double, double> calcGewinn = (wert, kauf, verkauf, dividende) => wert - kauf + verkauf + dividende;
-                _dataTable.UpdateColumn("Gewinn", "Gesamtwert", "Kaeufe", "Verkaeufe", "Dividende", calcGewinn);
+                var gewinnCalculator = new GewinnCalculator();
+                _dataTable.UpdateRows(gewinnCalculator);
                 result = true;
             }
             return result;
         }
+
+        class GewinnCalculator : DataRowUpdater
+        {
+            public override void Update(DataRow row)
+            {
+                double gesamtWert = row.GetDoubleValue("Gesamtwert");
+                double kaeufe = row.GetDoubleValue("Kaeufe");
+                double verkaeufe = row.GetDoubleValue("Verkaeufe");
+                double dividende = row.GetDoubleValue("Dividende");
+                double gewinn = gesamtWert - kaeufe + verkaeufe + dividende;
+                row.SetDoubleValue("Gewinn", gewinn);
+            }
+        }
     }
 }
+
+ 
