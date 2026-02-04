@@ -119,7 +119,7 @@ namespace DepotExplorer
 
         private void UpdateSaldo()
         {
-            _saldo = _kauf - _verkauf - _dividende;
+            _saldo = _verkauf + _dividende - _kauf;
             OnPropertyChanged("Saldo");
         }
     }
