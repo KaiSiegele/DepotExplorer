@@ -152,12 +152,14 @@ namespace DepotExplorer
                 DataRow lastRow = dtPosten.Rows[dtPosten.Rows.Count - 1];
                 Verkaeufe = lastRow.GetDoubleValue("Verkaeufe");
                 Kaeufe = lastRow.GetDoubleValue("Kaeufe");
+                Dividende = lastRow.GetDoubleValue("Dividende");
                 GesamtWert = lastRow.GetDoubleValue("Gesamtwert");
             }
             else
             {
                 Verkaeufe = 0.0;
                 Kaeufe = 0.0;
+                Dividende = 0.0;
                 GesamtWert = 0.0;
             }
 
@@ -213,12 +215,14 @@ namespace DepotExplorer
                 DataRow lastRow = dtPosten.Rows[dtPosten.Rows.Count - 1];
                 Verkaeufe = lastRow.GetDoubleValue("Verkaeufe");
                 Kaeufe = lastRow.GetDoubleValue("Kaeufe");
+                Dividende = lastRow.GetDoubleValue("Dividende");
                 GesamtWert = lastRow.GetDoubleValue("Gesamtwert");
             }
             else
             {
                 Verkaeufe = 0.0;
                 Kaeufe = 0.0;
+                Dividende = 0.0;
                 GesamtWert = 0.0;
             }
 
