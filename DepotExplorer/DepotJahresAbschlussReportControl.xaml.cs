@@ -17,7 +17,7 @@ namespace DepotExplorer
 
             _depotViewModels = new DepotViewModels(CachedData.Depots);
             CbDepots.ItemsSource = _depotViewModels;
-            _jahrViewModels = new JahrViewModels(CachedData.Aktien);
+            _jahrViewModels = new JahrViewModels(CachedData.Jahre);
             CbJahre.ItemsSource = _jahrViewModels;
             _selectionViewModel = new DepotJahrSelectionViewModel { JahrId =CachedData.Jahre.DefaultId, Updated = true };
             GBSelection.DataContext = _selectionViewModel;

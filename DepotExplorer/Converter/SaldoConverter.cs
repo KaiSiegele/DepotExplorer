@@ -10,9 +10,9 @@ namespace DepotExplorer
 {
     /// <summary>
     /// Klasse für die Umwandlung eines Doubles in eine Farbe
-    /// Wert < o = Grün
+    /// Wert > 0 = Grün
     /// Wert = 0 = Schwarz
-    /// Wert > 0 = Rot
+    /// Wert < 0 = Rot
     /// </summary>
     public class SaldoColourConverter : IValueConverter
     {
@@ -65,7 +65,7 @@ namespace DepotExplorer
 
     /// <summary>
     /// Klasse für die Umwandlung eines Doubles in eine Beschreibung
-    /// Wert < o = Negativ
+    /// Wert < 0 = Negativ
     /// Wert = 0 = Null
     /// Wert > 0 = Positiv
     /// Anhand dieser Beschreibung wird anschließend die Farbe für die Anzeige ermittelt
