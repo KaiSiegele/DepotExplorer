@@ -39,6 +39,33 @@ insert into Laender (Id, Name, Beschreibung) VALUES(5, 'Niederlande', 'Niederlan
 insert into Laender (Id, Name, Beschreibung) VALUES(6, 'USA', 'Vereinigte Staaten von Amerika');
 insert into Laender (Id, Name, Beschreibung) VALUES(7, 'Kanada', 'Kanada');
 
+
+create table Regionen
+(
+  Id int NOT NULL,
+  Name nvarchar(20) NOT NULL,
+  Beschreibung nvarchar(50) NOT NULL,
+  PRIMARY KEY (Id)
+);
+insert into Regionen (Id, Name, Beschreibung) VALUES(1, 'Deutschland', 'Deutschland');
+insert into Regionen (Id, Name, Beschreibung) VALUES(2, 'EU', 'EU');
+insert into Regionen (Id, Name, Beschreibung) VALUES(3, 'Europa', 'Europa');
+insert into Regionen (Id, Name, Beschreibung) VALUES(4, 'Welt', 'Welt');
+
+create table Themen
+(
+  Id int NOT NULL,
+  Name nvarchar(20) NOT NULL,
+  Beschreibung nvarchar(50) NOT NULL,
+  PRIMARY KEY (Id)
+);
+
+insert into Themen (Id, Name, Beschreibung) VALUES(1, 'DAX', 'Deutscher Aktienindex');
+insert into Themen (Id, Name, Beschreibung) VALUES(2, 'MDAX', 'MDAX');
+insert into Themen (Id, Name, Beschreibung) VALUES(3, 'Umwelttechnologie', 'Umwelttechnologie');
+insert into Themen (Id, Name, Beschreibung) VALUES(4, 'Oekologie', 'Oekologie');
+insert into Themen (Id, Name, Beschreibung) VALUES(5, 'Neue Energien', 'Neue Energien');
+
 create table Banken
 (
   Id int NOT NULL,
@@ -90,11 +117,13 @@ create table Fonds
 (
   Id int NOT NULL,
   Typ smallint NOT NULL default 0,
-  Theme smallint NOT NULL default 0,
-  Region smallint NOT NULL default 0,
+  Theme int NOT NULL default 0,
+  Region int NOT NULL default 0,
   Anbieter int NOT NULL,
   PRIMARY KEY (Id)
 );
+
+alter table Fonds add CONSTRAINT FK_Anbieter FOREIGN KEY (Anbieter) REFERENCES Anbieter(Id) on delete no action;
 
 create table Aktien
 (
@@ -104,6 +133,8 @@ create table Aktien
   Beschreibung nvarchar(50) NOT NULL,
   PRIMARY KEY (Id)
 );
+
+alter table Aktien add CONSTRAINT FK_Land FOREIGN KEY (Land) REFERENCES Laender(Id) on delete no action;
 
 create table Jahre
 (
