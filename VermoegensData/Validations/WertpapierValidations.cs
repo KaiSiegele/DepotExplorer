@@ -53,12 +53,15 @@ namespace VermoegensData
             bool result = false;
             if (base.ValidateInput(input, ref error))
             {
-                Wertpapier wp = WertpapierInfo.GetWertpapierByWKN(input);
-                result = ValidationTools.CheckValueUnique(bo, wp, FieldName, ref error);
-            }
-            else
-            {
-                error = Properties.Resources.WKNValidation_WrongFormat;
+                if (input.IsIdentificationCode())
+                {
+                    Wertpapier wp = WertpapierInfo.GetWertpapierByWKN(input);
+                    result = ValidationTools.CheckValueUnique(bo, wp, FieldName, ref error);
+                }
+                else
+                {
+                    error = Properties.Resources.WKNValidation_WrongFormat;
+                }
             }
             return result;
         }
